@@ -28,9 +28,9 @@ const WATCHED_ENV_VAR_KEYS = ['CLIENTNAME', 'AUTHCONFIGPATH', 'COMPUTERNAME'];
  * @param mainWindow
  */
 export const setupEnvReadInterval = (mainWindow: BrowserWindow | null) => {
-  setInterval(async () => {
-    await readLatestEnvs(mainWindow);
-  }, 10000);
+  // setInterval(async () => {
+  //   await readLatestEnvs(mainWindow);
+  // }, 10000);
 };
 
 /**
