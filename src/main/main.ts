@@ -164,9 +164,15 @@ if (!gotTheLock) {
   logger.info('Application quit because of single instance lock');
   app.quit();
 } else {
-  app.on('second-instance', (_e: any, argv: any) => {
-    handleDeepLink(argv, mainWindow);
-  });
+  if (process.platform === PLATFORM_WIN32) {
+    app.on('second-instance', (_e: any, argv: any) => {
+      handleDeepLink(argv, mainWindow);
+    });
+  } else {
+    app.on('open-url', (_event, url) => {
+      handleDeepLink([url], mainWindow);
+    });
+  }
 }
 
 /**
